@@ -1,27 +1,24 @@
 #include "main.h"
 
 /**
- * print_line - entry point
- *
- * Description: Prints lines
- *@n: number of lines
- * Return: void
+ * print_line - Entry point
+ * Description: Draws a straight line
+ * @n: Integer variable
+ * Return: int
  */
 
 void print_line(int n)
 {
-	int num_lines;
+	int i;
 
 	if (n <= 0)
 	{
 		_putchar('\n');
+		return;
 	}
-	else
+	for (i = 0; i < n; i++)
 	{
-		for (num_lines = 1; num_lines <= n; num_lines++)
-		{
-			putchar('');
-		}
-		_putchar('\n');
+		_putchar('_');
 	}
+	_putchar('\n');
 }
