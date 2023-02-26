@@ -1,46 +1,33 @@
 #include "main.h"
-/**
- * print_number - print an int numbers.
- * @n: number tested
- * Return: Always 0.
- */
-void print_number(int n)
-{
-	int i, j, digit, digits, power;
-	unsigned int temp, numchar, number;
 
-	digit = 0;
-	if (n < 0)
+/**
+ * print_triangle - Entry point
+ * Description: Print triangle
+ * @size: Integer
+ * Return: void
+ */
+
+void print_triangle(int size)
+{
+	int i, j, k;
+
+	if (size > 0)
 	{
-		_putchar('-');
-		temp = -n;
+		for (i = 1; i <= size; i++)
+		{
+			for (j = 1; j <= size - i; j++)
+			{
+				_putchar(32);
+			}
+			for (k = 1; k <= i; k++)
+			{
+				_putchar('#');
+			}
+			_putchar('\n');
+		}
 	}
 	else
 	{
-		temp = n;
-	}
-
-	number = temp;
-
-	while (number >= 10)
-	{
-		number = number / 10;
-		digit++;
-	}
-	digits = digit + 1;
-	power = 1;
-	i = 1;
-
-	while (i < digits)
-	{
-		power = power * 10;
-		i++;
-	}
-	j = power;
-	while (j >= 1)
-	{
-		numchar = (temp / j) % 10;
-		_putchar(numchar + '0');
-		j = j / 10;
+		_putchar('\n');
 	}
 }
