@@ -1,30 +1,27 @@
 #include "main.h"
 
 /**
- * print_square - entry point
- *
- * Description: Prints square
- *@size: size of square
- * Return: void
+ * print_square - Entry point
+ * Description: Print 8 Square
+ * @size: Integet variable
+ * Return: int;
  */
 
 void print_square(int size)
 {
-	int row, column;
+	int i, j;
 
 	if (size <= 0)
 	{
 		_putchar('\n');
+		return;
 	}
-	else
+	for (i = 0; i < size; i++)
 	{
-		for (row = 1; row <= size; row++)
+		for (j = 0; j < size; j++)
 		{
-			for (column = 1; column <= size; column++)
-			{
-				_putchar('#');
-			}
-			_putchar('\n');
+			_putchar('#');
 		}
+		_putchar('\n');
 	}
 }
