@@ -1,4 +1,11 @@
-int _putchar(char c);
+#ifndef MAIN_H
+#define MAIN_H
+
+/**
+ * Description: Header file containing prototypes for all functions
+ * used in the 0x06-pointers_arrays_strings directory
+ */
+
 char *_strcat(char *dest, char *src);
 char *_strncat(char *dest, char *src, int n);
 char *_strncpy(char *dest, char *src, int n);
@@ -9,5 +16,8 @@ char *cap_string(char *);
 char *leet(char *);
 char *rot13(char *);
 void print_number(int n);
-void *infinite_add(char *nl, char *n2, char *r, int size_r);
+char *infinite_add(char *n1, char *n2, char *r, int size_r);
 void print_buffer(char *b, int size);
+int _putchar(char c);
+
+#endif
