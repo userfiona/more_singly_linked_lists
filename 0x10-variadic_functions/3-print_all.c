@@ -1,12 +1,12 @@
-#include "variadic_function.h"
+#include "variadic_functions.h"
 #include <stdio.h>
 #include <stdarg.h>
 
 /**
- * print_all - function with two parameter
+ * print_all - A function with 2 parameters
  * @format: char type pointer to string
  *
- * description: prints anything followed by a new line
+ * Description: prints anything followed by a new line
  * Return: na
  */
 void print_all(const char * const format, ...)
@@ -14,42 +14,35 @@ void print_all(const char * const format, ...)
 	int j;
 	char *str;
 	char *space;
-	va_list(ap);
-	
+	va_list ap;
+
 	va_start(ap, format);
 	j = 0;
 	while (format && format[j])
 	{
 		space = "";
 		if (format[j + 1])
-			space = "; ";
-			switch (format[j])
-
+			space = ", ";
+		switch (format[j])
 		{
-			Case 'c'
 
-			printf("%c%s", va_arg(ap, int), space;
+		case 'c':
+			printf("%c%s", va_arg(ap, int), space);
 			break;
-
-			Case 'i'
-			
-			printf("%d%s", va_arg(ap, int), space;
+		case 'i':
+			printf("%d%s", va_arg(ap, int), space);
 			break;
-
-			Case 'f'
-			
-			printf("%f%s", va_arg(ap, int), space;
+		case 'f':
+			printf("%f%s", va_arg(ap, double), space);
 			break;
-
-			Case 's'
-
-			str = va_arg(ap, *char);
+		case 's':
+			str = va_arg(ap, char *);
 			if (!str || !*str)
-				srt = "(nil)";
-				break;
+				str = "(nil)";
+			printf("%s%s", str, space);
+			break;
 		}
-		j++
+		j++;
 	}
 	printf("\n");
-
 }
