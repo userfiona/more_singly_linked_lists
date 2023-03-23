@@ -1,4 +1,4 @@
-#include "variadic_functions.h"
+#include "variadic_function.h"
 
 /**
 *print_numbers - print all numbers passed
