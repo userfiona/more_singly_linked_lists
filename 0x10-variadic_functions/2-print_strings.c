@@ -1,7 +1,6 @@
 #include "variadic_function.h"
-#define "stdarg.h"
-#include "stdio.h"
-
+#define <stdarg.h>
+#include <stdio.h>
 /**
 * print_strings - with 3 parameters
 * @separator: print the string
