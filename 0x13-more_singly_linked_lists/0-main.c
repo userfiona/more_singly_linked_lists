@@ -22,3 +22,11 @@ int main(void)
         printf("Error\n");
         return (1);
     }
+    new->n = 9;
+    new->next = head;
+    head = new;
+    n = print_listint(head);
+    printf("-> %lu elements\n", n);
+    free(new);
+    return (0);
+}
