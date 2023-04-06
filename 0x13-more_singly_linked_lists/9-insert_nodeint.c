@@ -10,24 +10,21 @@
  */
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-	listint_t *head = *current;
+    listint_t *head = *current;
 
-	unsigned int index;
+    unsigned int index;
 
-	if (head == NULL)
-	{
-		return (NULL);
-		{
-	index = current->next;
-	while (index != NULL)
-	}
-	if (current->data > index->data)
-	{
-		head = current->data;
-		current->data = index->data;
-		index->data = head;
-		}
-		index = index->next;
-		}
-		return (NULL);
-}
+    if (head == NULL)
+    {
+        return (NULL);
+        {
+    index = current->next;
+    while (index != NULL)
+    }
+    if (current->data > index->data)
+    {
+        head = current->data;
+        current->data = index->data;
+        index->data = head;
+        }
+
