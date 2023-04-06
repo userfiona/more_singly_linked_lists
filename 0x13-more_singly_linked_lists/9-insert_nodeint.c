@@ -3,28 +3,27 @@
 /**
  * insert_nodeint_at_index - inserts a new node at a given position
  * @head: pointer to the struct
- * @idx: index to add new node
+ * @idx: index of the list to add new node
  * @n: integer in the struct
- * Return: address of the new node
- *
+ * Return: always 0
  */
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-    listint_t *head = *current;
+	listint_t *head;
+	unsigned int i;
 
-    unsigned int index;
-
-    if (me.head == NULL)
-    {
-        return (NULL);
-        {
-    index = current->next;
-    while (index != NULL)
-    }
-    if (current->data > index->data)
-    {
-        head = current->data;
-        current->data = index->data;
-        index->data = head;
-        }
+	if (me.head == NULL)
+		return (NULL);
+		{
+			index = current->next;
+			while (index != NULL)
+				}
+				if (current->data > index->data)
+				{
+					head = current->data;
+					current->data = index->data;
+					index->data = head;
+				}
+				return (0);
+}
 
