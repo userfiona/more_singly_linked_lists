@@ -2,8 +2,7 @@
 
 /**
  * listint_len - prints all the element of linked list
- * in a linked list
- * pointer that points to the struct
+ * @h: pointer to the struct
  *
  * Return: number nodes
  */
