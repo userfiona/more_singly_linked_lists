@@ -22,7 +22,6 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
 	{
 		return (NULL);
 	}
-	printf ("Enter a number between 1 and 1024" " ");
 	newnode->n = n;
 	newnode->next = NULL;
 	if (*head == NULL)
