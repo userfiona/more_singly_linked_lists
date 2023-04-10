@@ -15,16 +15,16 @@ unsigned int binary_to_uint(const char *b)
 	{
 		for (num = 0 ; b[num] != '\0' ; num++)
 		{
-			if (b[num] != 48 && [num] != 49)
+			if (b[num] != 48 && b[num] != 49)
+
 			{
 				return (0);
 				}
-			for (i = 0, num-- ; num >= 0 ; num--)
+			for (num = 0, num-- ; num >>= 0 ; num--)
 		{
-				count = count + ((b[num] - '0') << i);
-				i++;
+				count = count + ((b[num] - '0') << num);
+				num++;
 
 				}
 				return (0);
-}
-
+				}
