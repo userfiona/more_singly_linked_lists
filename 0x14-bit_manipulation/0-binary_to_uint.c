@@ -13,13 +13,18 @@ unsigned int binary_to_uint(const char *b)
 
 	if (b != NULL)
 	{
-		for (int i = (num - 1); i >= 0; i--)
+		for (num = 0 ; b[num] != '\0' ; num++)
 		{
+			if (b[num] != 48 && [num] != 49)
 			{
+				return (0);
+				}
+			for (i = 0, num-- ; num >= 0 ; num--)
+		{
 				count = count + ((b[num] - '0') << i);
 				i++;
 
 				}
 				return (0);
-	}
+}
 
