@@ -15,8 +15,8 @@ unsigned int binary_to_uint(const char *b)
 		{
 		if (num[i] == '1')
 			}
-				if (n > 1)
-					bin(n >> 1);
+				if (num > 1)
+					bin(num >> 1);
 
 				printf("%d", n & 1);
 
