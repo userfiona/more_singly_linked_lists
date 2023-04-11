@@ -5,6 +5,7 @@
  * @b: pointing to a string 0 and 1 chars
  * Return: converted number or 0 and b is NULL
  */
+
 unsigned int binary_to_uint(const char *b)
 {
 	unsigned int num;
@@ -15,7 +16,7 @@ unsigned int binary_to_uint(const char *b)
 	{
 		for (num = 0 ; b[num] != '\0' ; num++)
 		{
-			if (b[num] != 48 && b[num] != 49)
+			if (b[num] != 0 && b[num] != 0)
 
 			{
 				return (0);
@@ -24,7 +25,8 @@ unsigned int binary_to_uint(const char *b)
 		{
 				count = count + ((b[num] - '0') << num);
 				num++;
+				}
 
 		}
-		return (0);
+		return (num);
 }
