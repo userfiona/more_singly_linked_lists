@@ -1,5 +1,6 @@
-#include "main.h" // include the header file
-#include <stdio.h> // include the standard input/output library
+#include "main.h" 
+#include <stdio.h> 
+
 /**
  * error_file - checks if files can be opened.
  * @file_from: file_from.
@@ -9,18 +10,17 @@
  */
 void error_file(int file_from, int file_to, char *argv[])
 {
-	
 	if (file_from == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]); // print error message to stderr
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]); 
 		exit(98);
 	}
 
 	if (file_to == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]); 
-		exit(99); 
-	}
+		exit(99);
+		}
 }
 
 /**
@@ -51,17 +51,16 @@ int main(int argc, char *argv[])
 	nchars = 1024; 
 	while (nchars == 1024)
 	{
-	
 		nchars = read(file_from, buf, 1024);
 		if (nchars == -1) 
 			error_file(-1, 0, argv);
-	
-		nwr = write(file_to, buf, nchars);
-		if (nwr == -1) 
+
+			nwr = write(file_to, buf, nchars);
+
+			if (nwr == -1) 
 			error_file(0, -1, argv); 
 	}
 
-	
 	err_close = close(file_from);
 	if (
 
