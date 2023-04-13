@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlid.h>
 
 /**
  * read_textfile - reads a text file and prints a specified number of letters
@@ -9,7 +10,6 @@
  */
 ssize_t read_textfile(const char *fn, size_t num_letters)
 {
-	int fn;
 	ssize_t bytes_open, bytes_read, bytes_written;
 	char *buffer;
 
@@ -27,7 +27,7 @@ ssize_t read_textfile(const char *fn, size_t num_letters)
 
 				bytes_written = write(STDOUT_FILENO, buffer, bytes_read);
 
-				if (bytes_open = -1 || bytes_read = -1 || bytes_written)
+				if (bytes_open = -1 || bytes_read = -1 || bytes_written != bytes_read)
 				{
 					free(buffer);
 					return (0);
