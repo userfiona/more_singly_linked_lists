@@ -11,13 +11,13 @@ int get_bit(unsigned long int my_num, unsigned int my_index)
 {
     int my_bit;
 
-    // Check if index is valid
-    if (my_index > (sizeof(unsigned long int) * 8 - 1))
+    
+    if (my_index >= (sizeof(unsigned long int) * 8 ))
         return (-1);
 
-    // Extract bit at the given index
+   
     my_bit = (my_num >> my_index) & 1;
 
-    // Return the value of the bit
+   
     return (my_bit);
 }
