@@ -7,17 +7,14 @@
  *
  * Return: bit (Success) or -1 (error)
  */
-int get_bit(unsigned long int my_num, unsigned int my_index)
+int get_bit(unsigned long int num, unsigned int index)
 {
-    int my_bit;
+	int my_bit;
 
-    
-    if (my_index >= (sizeof(unsigned long int) * 8 ))
-        return (-1);
+	if (index >= (sizeof(unsigned long int) * 8))
+		return (-1);
 
-   
-    my_bit = (my_num >> my_index) & 1;
+		my_bit = (num >> index) & 1;
 
-   
-    return (my_bit);
+		return (my_bit);
 }
