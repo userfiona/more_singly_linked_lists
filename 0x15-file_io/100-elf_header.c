@@ -1,8 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <elf.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <elf.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 void display_elf_header_info(const char* filename) {
     int fd = open(filename, O_RDONLY);

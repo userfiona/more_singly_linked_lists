@@ -1,66 +1,38 @@
-#include "main.h" 
-#include <stdio.h> 
+#include "main.h"
 
 /**
- * error_file - checks if files can be opened.
- * @file_from: file_from.
- * @file_to: file_to.
- * @argv: arguments vector.
- * Return: no return.
+ * append_text_to_file - appends text at the end of a file
+ * @filename: the name of the file to append text to.
+ * @text_content: the text content to be appended to the file.
+ *
+ * Return: 1 if successful, -1 if the file does not exist or if the operation fails.
  */
-void error_file(int file_from, int file_to, char *argv[])
+int append_text_to_file(const char *filename, char *text_content)
 {
-	if (file_from == -1)
+	int file_descriptor; 
+	int num_of_chars; 
+	int write_return;
+
+	if (!filename)
+		return (-1);
+
+	file_descriptor = open(filename, O_WRONLY | O_APPEND)
+
+	if (file_descriptor == -1)
+		return (-1);
+
+	if (text_content) 
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]); 
-		exit(98);
+		for (num_of_chars = 0; text_content[num_of_chars]; num_of_chars++) 
+			;
+
+		write_return = write(file_descriptor, text_content, num_of_chars); 
+
+		if (write_return == -1)
+			return (-1);
 	}
 
-	if (file_to == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]); 
-		exit(99);
-		}
+	close(file_descriptor); 
+
+	return (1); 
 }
-
-/**
- * main - check the code for ALX students.
- * @argc: number of arguments.
- * @argv: arguments vector.
- * Return: Always 0.
- */
-int main(int argc, char *argv[])
-{
-	int file_from, file_to, err_close; 
-	ssize_t nchars, nwr; 
-	char buf[1024]; 
-
-	if (argc != 3)
-	{
-		dprintf(STDERR_FILENO, "%s\n", "Usage: cp file_from file_to"); 
-		exit(97); 
-	}
-	file_from = open(argv[1], O_RDONLY);
-
-
-	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
-
-
-	error_file(file_from, file_to, argv);
-
-	nchars = 1024; 
-	while (nchars == 1024)
-	{
-		nchars = read(file_from, buf, 1024);
-		if (nchars == -1) 
-			error_file(-1, 0, argv);
-
-			nwr = write(file_to, buf, nchars);
-
-			if (nwr == -1) 
-			error_file(0, -1, argv); 
-	}
-
-	err_close = close(file_from);
-	if (
-
