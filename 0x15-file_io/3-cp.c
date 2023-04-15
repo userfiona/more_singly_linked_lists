@@ -97,5 +97,4 @@ int main(int argc, char *argv[])
 	close_file_descriptor(destination_file_descriptor);
 
 	return (0);
-	}
 }
