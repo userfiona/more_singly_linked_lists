@@ -102,4 +102,5 @@ void print_data(unsigned char *e_ident)
 
 	switch (e_ident[EI_DATA])
 	{
-	case ELFDATANONE:
+		}
+		}
