@@ -100,8 +100,4 @@ int main(int argc, char *argv[])
 				"Error: Can't write to %s\n", argv[2]);
 			free(buffer);
 			exit(99);
-		}
-}
-
-	
-
+			}
