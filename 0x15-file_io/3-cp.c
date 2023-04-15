@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char *allocate_buffer(char *filename); // Allocate a buffer to store file data
-void close_file_descriptor(int fd); // Close a file descriptor
+char *allocate_buffer(char *filename); 
+void close_file_descriptor(int fd); 
 
 /**
  * allocate_buffer - Allocates 1024 bytes for a buffer.
