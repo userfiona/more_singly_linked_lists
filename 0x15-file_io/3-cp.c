@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char *allocate_buffer(char *filename); 
+char *allocate_buffer(char *filename);
 void close_file_descriptor(int fd); 
 
 /**
@@ -97,5 +97,4 @@ int main(int argc, char *argv[])
 	close_file_descriptor(destination_file_descriptor);
 
 	return (0);
-}
-			
+}			
