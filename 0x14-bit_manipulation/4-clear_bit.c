@@ -1,31 +1,23 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
- * clear_bit - sets a bit at a given index to 0
- * @number: pointer to the number to change
- * @index: index of the bit to set to 0
+ * clear_bit - function that clears a bit at a given position in a value
+ * @value_ptr: pointer to the value to modify
+ * @bit_position: position of the bit to clear
  *
- * Return: 1 for success, -1 for failure
+ * Description: sets the value of a bit to 0 at a given index
+ * Return: 1 if the operation succeeded and -1 if an error occurred
  */
-int clear_bit(unsigned long int *number, unsigned int index)
+int clear_bit(unsigned long int *value_ptr, unsigned int bit_position)
 {
-  /* Declare a variable to hold the bit mask */
-  unsigned long int bit_mask;
+	/* Check if the bit position is valid */
+	if (bit_position > (sizeof(*value_ptr) * 8))
+		return (-1);
 
-  /* Check if the specified index is out of range (greater than 63) */
-  if (index > 63) {
-    /* Return -1 to indicate failure */
-    return (-1);
-  }
+	/* Clear the bit at the given position */
+	*value_ptr &= ~(1 << bit_position);
 
-  /* Create a mask that has a single bit set to 1 at the specified index */
-  bit_mask = 1UL << index;
-
-  /* Use the bitwise NOT operator (~) to invert the bit mask, and then
-     use the bitwise AND operator (&) to clear the bit at the specified index */
-  *number = (~(bit_mask) & *number);
-
-  /* Return 1 to indicate success */
-  return (1);
+	/* Operation succeeded */
+	return (1);
 }
-

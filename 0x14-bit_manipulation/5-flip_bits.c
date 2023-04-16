@@ -10,14 +10,13 @@
  */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	unsigned int num_bits_flipped; // number of bits flipped so far
+	unsigned int num_bits_flipped;
 
 	for (num_bits_flipped = 0; n || m; n >>= 1, m >>= 1)
 	{
-		if ((n & 1) != (m & 1)) // if the least significant bits differ
-			num_bits_flipped++; // increment the number of flipped bits
+		if (n % 2 != m % 2)
+			num_bits_flipped++;
 	}
 
 	return (num_bits_flipped);
 }
-
