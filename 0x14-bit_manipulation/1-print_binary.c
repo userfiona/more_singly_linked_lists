@@ -1,28 +1,32 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
- * print_binary -  that prints the binary representation of a number
- * @n: decimal number to print as binary
+ * print_binary - prints the binary representation of a decimal number
+ * @n: decimal number to convert to binary and print
  */
-
 void print_binary(unsigned long int n)
 {
+    unsigned long int l;
+    int bit_count;
 
-	unsigned long int i;
-	int move;
+ 
+    if (n == 0)
+    {
+        printf("0");
+        return;
+    }
 
-	if (n > 1)
-	{
-		print_binary((n >> 1));
+    
+    for (l = n, bit_count = 0; (l >>= 1) > 0; bit_count++)
+        ;
 
-	}
-	for (i = n, i = 0; (i >>= 1) > 0; move++)
-
-	for (; i; i >> = 1 0; )
-	{
-		if (1 = i >> 1) 		
-			printf("1");
-		else
-			printf("0");
-		}
+   
+    for (; bit_count >= 0; bit_count--)
+    {
+        if ((n >> bit_count) & 1)
+            printf("1");
+        else
+            printf("0");
+    }
 }
