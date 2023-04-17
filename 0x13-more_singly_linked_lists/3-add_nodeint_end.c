@@ -3,43 +3,46 @@
 /**
  * add_nodeint_end - add a new node at the end
  * of a linked list
- * @head: head of a list.
- * @n: n element.
+ * @head: head of the linked list.
+ * @n: integer value to add to the new node.
  *
- * Return: address of the new element. NUll if it failed.
+ * Return: address of the new element, NULL if it failed.
  */
 
 listint_t *add_nodeint_end(listint_t **head, const int n)
 {
-	listint_t *newnode;
-	listint_t *point;
+	listint_t *new_node;
+	listint_t *temp;
 
-	if (&*head == NULL)
+	if (head == NULL)
 	{
 		return (NULL);
 	}
-	newnode = malloc(sizeof(listint_t));
-	if (newnode == NULL)
+
+	new_node = malloc(sizeof(listint_t));
+	if (new_node == NULL)
 	{
 		return (NULL);
 	}
-	newnode->n = n;
-	newnode->next = NULL;
+
+	new_node->n = n;
+	new_node->next = NULL;
+
 	if (*head == NULL)
 	{
-		*head = newnode;
+		*head = new_node;
 	}
 	else
 	{
-		point = *head;
-
-		while (point->next != NULL)
+		temp = *head;
+		while (temp->next != NULL)
 		{
+			temp = temp->next;
+		}
 
-		point = point->next;
-	}
-	point->next = newnode;
+		temp->next = new_node;
 
-	}
-		return (0);
+		}
+
+		return (new_node);
 }
