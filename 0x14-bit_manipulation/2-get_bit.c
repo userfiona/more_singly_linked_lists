@@ -9,13 +9,18 @@
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
-	int bit_value;
+	int bit_val;
 
-    /* If the index is out of range */
-	if (index >= (sizeof(unsigned long int) * 8))
+	/* If the index is out of range */
+	if (index >= (sizeof(unsigned long int) * 8)) 
+	{
 		return (-1);
+	}
 
-		bit_value = (n >> index) & 1; /* Get the bit value at index */
+		/* Shift the bit at the given index to the rightmost position and mask it */
 
-		return (bit_value);
+		bit_val = (n >> index) & 1;
+
+		/* Return the bit value */
+		return (bit_val);
 }
