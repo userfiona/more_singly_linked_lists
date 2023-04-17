@@ -58,9 +58,9 @@ void close_file_descriptor(int fd)
 int main(int argc, char *argv[])
 {
 	int source_file_descriptor,
-    destination_file_descriptor,
-    read_bytes,
-    written_bytes;
+	destination_file_descriptor,
+	read_bytes,
+	written_bytes;
 	char *buffer;
 
 	if (argc != 3)
