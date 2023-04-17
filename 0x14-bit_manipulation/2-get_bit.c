@@ -9,13 +9,13 @@
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
-    int bit_value;
+	int bit_value;
 
     /* If the index is out of range */
-    if (index >= (sizeof(unsigned long int) * 8))
-        return (-1);
+	if (index >= (sizeof(unsigned long int) * 8))
+		return (-1);
 
-    bit_value = (n >> index) & 1; /* Get the bit value at index */
+		bit_value = (n >> index) & 1; /* Get the bit value at index */
 
-    return (bit_value);
+		return (bit_value);
 }
