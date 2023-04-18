@@ -1,7 +1,3 @@
-/*
- * File: 5-free_listint2.c
- * Auth: Gedeon Obae Gekonge
- */
 
 #include "lists.h"
 
@@ -11,19 +7,20 @@
  *
  * Description: Frees a listint_t list and sets the head to NULL.
  */
+
 void free_listint2(listint_t **head)
 {
-	listint_t *current;
+    listint_t *current;
 
-	if (head == NULL)
-		return;
+    if (head == NULL)
+        return;
 
-		while (head != NULL && *head != NULL)
-	{
-		current = *head;
-		*head = current->next;
-		free(current);
-	}
-
-	*head = NULL;
+    while (head != NULL && *head != NULL)
+    {
+        current = *head;
+        *head = current->next;
+        free(current);
+    }
+    *head = NULL;
 }
+
