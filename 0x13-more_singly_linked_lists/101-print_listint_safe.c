@@ -1,59 +1,73 @@
 #include "lists.h"
 
 /**
- * print_listint_safe - prints a linked list of integers, but safely
- * @head: pointer to the head node
+ * print_listint_safe - prints a list but safely
+ * @head: pointer to the head of the list
  *
- * Description: This function prints a linked list of integers. It keeps
- * track of the memory addresses of the nodes it has already printed, so
- * that it does not enter an infinite loop if the list contains a cycle.
+ * Description: prints the elements of a linked list,
+ *   but avoids printing an infinite loop if one exists
  *
- * Return: The number of nodes in the list.
+ * Return: the number of nodes in the list
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t count = 0;        /* number of nodes in the list */
-	size_t index = 0;        /* index of the node where a cycle was detected */
-	listint_t const **array;/* an array to keep track of the nodes */
+	size_t count = 0;
+	size_t index = 0;
+	listint_t const **node_array;
 
-	array = malloc(sizeof(listint_t *) * 1024);/* allocate memory for the array */
-	if (!array)
-		exit(98);           /* exit if allocation fails */
-	unsigned int i = 0;     /* loop counter */
-	unsigned int flag = 0;  /* flag to indicate if a cycle was detected */
+	/* Allocate memory for array of pointers to nodes */
+	node_array = malloc(sizeof(listint_t *) * 1024);
+	if (!node_array)
+		exit(98);
 
-	while (head != NULL)     /* iterate through the list */
+	unsigned int i = 0;
+	unsigned int flag = 0;
+
+	/* Traverse the linked list */
+	while (head != NULL)
 	{
-		for (i = 0; i < count; i++)/* loop through the array */
+		/* Check if the current node has already been printed */
+		for (i = 0; i < count; i++)
 		{
-			if (head == array[i])/* check if the node is already in the array */
+			if (head == node_array[i])
 			{
-				flag = 1;       /* set the flag */
-				index = i;      /* save the index */
-				break;          /* break out of the loop */
+				/* A loop has been found */
+				flag = 1;
+				index = i;
+				break;
 			}
 			else
 				flag = 0;
 		}
 
-		if (flag == 1)  /* if a cycle was detected, break out of the loop */
+		if (flag == 1)
 			break;
-		array[count] = head;    /* add the node to the array */
-		head = head->next;      /* move to the next node */
-		count++;                /* increment the count */
+
+		/* Add the current node to the array */
+		node_array[count] = head;
+
+		/* Move to the next node */
+		head = head->next;
+
+		/* Increment the count */
+		count++;
 	}
 
+	/* Print the nodes in the linked list */
 	i = 0;
-	while (i < count)           /* loop through the array again */
+	while (i < count)
 	{
-		printf("[%p] %d\n", (void *)array[i], array[i]->n);
+		printf("[%p] %d\n", (void *)node_array[i], node_array[i]->n);
 		i++;
 	}
-	if (flag == 1)              /* if a cycle was detected, print the node where it occurs */
-	{
-		printf("-> [%p] %d\n", (void *)array[index], array[index]->n);
-	}
-	free(array);                /* free the array */
-	return (count);             /* return the count */
+
+	/* Print the node that caused the loop, if one was found */
+	if (flag == 1)
+		printf("-> [%p] %d\n", (void *)node_array[index], node_array[index]->n);
+
+	free(node_array);
+
+	/* Return the number of nodes in the list */
+	return (count);
 }
 
