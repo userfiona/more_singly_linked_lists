@@ -1,73 +1,50 @@
 #include "lists.h"
 
 /**
- * print_listint_safe - prints a list but safely
- * @head: pointer to the head of the list
+ * free_listint_safe - Frees a listint_t list safely.
+ * @h: A pointer to the address of the head of the listint_t list.
  *
- * Description: prints the elements of a linked list,
- *   but avoids printing an infinite loop if one exists
+ * Description: This function safely frees a linked list by checking for loops
+ *              and freeing only nodes that have not been previously freed.
  *
- * Return: the number of nodes in the list
+ * Return: The number of nodes freed.
  */
-size_t print_listint_safe(const listint_t *head)
+size_t free_listint_safe(listint_t **h)
 {
-	size_t count = 0;
-	size_t index = 0;
-	listint_t const **node_array;
-
-	/* Allocate memory for array of pointers to nodes */
-	node_array = malloc(sizeof(listint_t *) * 1024);
-	if (!node_array)
-		exit(98);
-
+	size_t num_freed = 0;
+	listint_t **node_ptrs;
 	unsigned int i = 0;
-	unsigned int flag = 0;
+	unsigned int is_loop = 0;
 
-	/* Traverse the linked list */
-	while (head != NULL)
+	node_ptrs = malloc(sizeof(listint_t *) * 1024);
+	if (!node_ptrs)
+		exit(98);
+	while (*h != NULL)
 	{
-		/* Check if the current node has already been printed */
-		for (i = 0; i < count; i++)
+		for (i = 0; i < num_freed; i++)
 		{
-			if (head == node_array[i])
+			if (*h == node_ptrs[i])
 			{
-				/* A loop has been found */
-				flag = 1;
-				index = i;
+				is_loop = 1;
 				break;
 			}
 			else
-				flag = 0;
+				is_loop = 0;
 		}
-
-		if (flag == 1)
+		if (is_loop == 1)
 			break;
-
-		/* Add the current node to the array */
-		node_array[count] = head;
-
-		/* Move to the next node */
-		head = head->next;
-
-		/* Increment the count */
-		count++;
+		node_ptrs[num_freed] = *h;
+		*h = (*h)->next;
+		num_freed++;
 	}
-
-	/* Print the nodes in the linked list */
 	i = 0;
-	while (i < count)
+	while (i < num_freed)
 	{
-		printf("[%p] %d\n", (void *)node_array[i], node_array[i]->n);
+		free(node_ptrs[i]);
 		i++;
 	}
-
-	/* Print the node that caused the loop, if one was found */
-	if (flag == 1)
-		printf("-> [%p] %d\n", (void *)node_array[index], node_array[index]->n);
-
-	free(node_array);
-
-	/* Return the number of nodes in the list */
-	return (count);
+	free(node_ptrs);
+	*h = NULL;
+	return (num_freed);
 }
 
