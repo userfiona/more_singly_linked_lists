@@ -1,75 +1,89 @@
 #include "lists.h"
+#include <stdio.h>
+
+size_t count_unique_nodes(const listint_t *head);
+size_t print_listint_safe(const listint_t *head);
 
 /**
- * free_listp - frees a linked list
- * @head: pointer to a pointer of the head of a list
+ * count_unique_nodes - Counts the number of unique nodes
+ *                      in a looped listint_t linked list.
+ * @head: A pointer to the head of the listint_t to check.
  *
- * Description: This function frees a linked list.
- * 
- * Return: no return
+ * Return: If the list is not looped - 0.
+ *         Otherwise - the number of unique nodes in the list.
  */
-void free_listp(listp_t **head)
+size_t count_unique_nodes(const listint_t *head)
 {
-	listp_t *temp;
-	listp_t *current;
+    const listint_t *tortoise, *hare;
+    size_t nodes_count = 1;
 
-	if (head != NULL)
-	{
-		current = *head;
-		while ((temp = current) != NULL)
-		{
-			current = current->next;
-			free(temp);
-		}
-		*head = NULL;
-	}
+    if (head == NULL || head->next == NULL)
+        return (0);
+
+    tortoise = head->next;
+    hare = (head->next)->next;
+
+    while (hare)
+    {
+        if (tortoise == hare)
+        {
+            tortoise = head;
+            while (tortoise != hare)
+            {
+                nodes_count++;
+                tortoise = tortoise->next;
+                hare = hare->next;
+            }
+
+            tortoise = tortoise->next;
+            while (tortoise != hare)
+            {
+                nodes_count++;
+                tortoise = tortoise->next;
+            }
+
+            return (nodes_count);
+        }
+
+        tortoise = tortoise->next;
+        hare = (hare->next)->next;
+    }
+
+    return (0);
 }
 
 /**
- * print_listint_safe - prints a linked list.
- * @head: pointer to the head of a list
+ * print_listint_safe - Prints a listint_t list safely.
+ * @head: A pointer to the head of the listint_t list.
  *
- * Description: This function prints a linked list and ensures
- *              that there are no loops in the list.
- * 
- * Return: number of nodes in the list
+ * Return: The number of nodes in the list.
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t num_nodes = 0;
-	listp_t *hptr, *new, *add;
+    size_t nodes_count, index = 0;
 
-	hptr = NULL;
-	while (head != NULL)
-	{
-		new = malloc(sizeof(listp_t));
+   nodes_count = count_unique_nodes(head);
 
-		if (new == NULL)
-			exit(98);
+        if (nodes_count == 0)
+    {
+        for (; head != NULL; nodes_count++)
+        {
+            printf("[%p] %d\n", (void *)head, head->n);
+            head = head->next;
+        }
+    }
 
-		new->p = (void *)head;
-		new->next = hptr;
-		hptr = new;
+    else
+    {
+        for (index = 0; index < nodes_count; index++)
+        {
+            printf("[%p] %d\n", (void *)head, head->n);
+            head = head->next;
+        }
 
-		add = hptr;
+        printf("-> [%p] %d\n", (void *)head, head->n);
+    }
 
-		while (add->next != NULL)
-		{
-			add = add->next;
-			if (head == add->p)
-			{
-				printf("-> [%p] %d\n", (void *)head, head->n);
-				free_listp(&hptr);
-				return (num_nodes);
-			}
-		}
-
-		printf("[%p] %d\n", (void *)head, head->n);
-		head = head->next;
-		num_nodes++;
-	}
-
-	free_listp(&hptr);
-	return (num_nodes);
+    return (nodes_count);
 }
 
