@@ -1,7 +1,7 @@
 #include "lists.h"
 #include <stdio.h>
 
-size_t count_unique_nodes(const listint_t *head);
+size_t print_listint_safe(const listint_t *head);
 size_t print_listint_safe(const listint_t *head);
 
 /**
@@ -12,7 +12,7 @@ size_t print_listint_safe(const listint_t *head);
  * Return: If the list is not looped - 0.
  *         Otherwise - the number of unique nodes in the list.
  */
-size_t count_unique_nodes(const listint_t *head)
+size_t print_listint_safe(const listint_t *head)
 {
 	const listint_t *tortoise, *hare;
 	size_t nodes_count = 1;
