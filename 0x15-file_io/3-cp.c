@@ -50,10 +50,10 @@ void close_file_descriptor(int fd)
  *
  * Return: 0 on success.
  *
- * Description: If the argument count is incorrect - exit code 97.
- *              If the source file does not exist or cannot be read - exit code 98.
- *              If the destination file cannot be created or written to - exit code 99.
- *              If the source or destination files cannot be closed - exit code 100.
+ * Description: If the argument count is incorrect, exit code 97.
+ *		If the source file does not exist or cannot be read, exit code 98.
+ *		If the destination file cannot be created or written to, exit code 99.
+ *		If the source or destination files cannot be closed, exit code 100.
  */
 int main(int argc, char *argv[])
 {
